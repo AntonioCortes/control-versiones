@@ -1,1 +1,89 @@
 <h1 class="title">Instantáneas del volumen</h1>
+
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git add [ruta a añadir]
+git init create a new local repository using git init 
+git add create and add a file to the repo using git add
+git commit ==== commit changes using git commit
+git commit --amend --no-edit==== modify the last commit changes, --no-edit permite no alterar el mensaje del commit
+</code></pre>
+</div>
+
+
+
+
+- git clean -f -d ==== remove untracked directories
+git reflog ==== para ver todos los cambios
+- git fetch
+- git checkout develop
+- git pull origin develop
+- git merge [rama a mergear]
+- git status
+- git push origin develop
+
+- git add .
+- git reset HEAD 'nombre fichero' ==== Para sacar fichero del stage
+
+
+
+
+
+Sometimes you may not fully test your changes before comitting them and may have undesirable consequences … you can back out your changes by using a git revert command like the following. You can either specify the id of your commit that you can see from the previous log output or use the shortcut HEAD to rollback the last commit:
+git revert HEAD --no-edit
+NOTE: If you don't specify the --no-edit flag you may be presented with an editor screen showing the message with changes to be reverted. In that case, press the Control (or Ctrl) key simultaneously with X.
+
+NOTA: HACER FETCH ANTES DE PULL
+git fetch
+
+Pull
+Always pull before you push. When you pull first, you can prevent upstream merge conflicts.
+
+
+
+**git diff 
+
+
+
+**************************
+Revertir commits:
+Solución si NO hemos subido el commit a nuestro repositorio remoto (no hemos realizado push):
+
+1ª opción:
+
+git reset --hard HEAD~1
+
+--head: Con esta opción estamos indicando que retrocedemos a el comit HEAD~1 y perdemos todas las confirmaciones posteriores. HEAD~1 es un atajo para apuntar al commit anterior al que nos encontramos. CUIDADO, con la opcion –head, ya que como he dicho se borran todos los commits posteriores al commit al que indicamos.
+
+2ª opción:
+
+git reset --soft HEAD~1 
+
+--soft: con esta opción estamos indicando que retrocedemos a el commit HEAD~1 y no perdemos los cambios de los commits posteriores. Todos los cambios aparecerán como pendientes para realizar un commit.
+Solución si hemos subido el commit a nuestro repositorio remoto (hemos realizado push):
+
+En caso de que queramos borrar un commit que ya hemos subido al servidor remoto, la mejor opcion es realizar un nuevo commit que borre el commit que queremos eliminar utilizando el comando revert. De esta forma cualquier usuario que se tenga actualizado el contenido del repositorio remoto puede obtener el cambio simplemente haciendo pull. Por lo tanto para borrar el ultimo commit teniendo en cuanta que el commit esta subido en un repositoriio remoto debemos usar:
+
+git revert HEAD
+*****************************
+
+
+
+************
+git stash
+
+git stash pop
+************
+
+
+
+integración:
+git-am to apply patches e-mailed in from your contributors. git-pull to merge from your trusted lieutenants. git-format-patch to prepare and send suggested alternative to contributors. git-revert to undo botched commits. git-push to publish the bleeding edge.
+
+developer:
+git-clone from the upstream to prime the local repository. git-pull and git-fetch from "origin" to keep up-to-date with the upstream. git-push to shared repository, if you adopt CVS style shared repository workflow. git-format-patch to prepare e-mail submission, if you adopt Linux kernel-style public forum workflow. git-send-email to send your e-mail submission without corruption by your MUA. git-request-pull to create a summary of changes for your upstream to pull.
+
+admin:
+git-daemon to allow anonymous download from repository. git-shell can be used as a restricted login shell for shared central repository users. git-http-backend provides a server-side implementation of Git-over-HTTP ("Smart http") allowing both fetch and push services. gitweb provides a web front-end to Git repositories, which can be set-up using the git-instaweb script.
+

@@ -1,1 +1,50 @@
 <h1 class="title">Unión de ramas</h1>
+
+<ul>
+    <li>Para unir una rama con aquella en la que estás posicionada se usa <b>git merge</b></li>
+    <li>Para abortar el merge se utiliza: <b>git merge --abort</b></li>
+</ul>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git merge [nombre de la rama]
+
+git merge --abort
+</code></pre>
+</div>
+
+
+<h2>Comparación de archivos</h2>
+
+<p>Git permite comparar archivos entre ramas utilizando el comando <b>git diff --name-status</b></p>
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+# ver archivos diferentes entre 2 ramas
+git diff --name-status [rama1][rama2]
+</code></pre>
+</div>
+    
+<h2>Visualización de objetos</h2>
+<p>Para ver información sobre distintos elementos ya sean ramas, commits, etc se utiliza el comando <b>git show</b></p>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git show [objeto]
+git show --name-status [objeto]
+git show --name-only [objeto]
+git show --pretty [objeto]
+</code></pre>
+</div>
+        
+
+
+<h2>Unión evitando espacios en blanco</h2>
+<p><b>NOTA:</b> Utilizar este comando al mergear cuando hay conflictos con los espacios en blanco</p>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+#Comando:
+git merge -Xignore-all-space [nombre de rama]
+</code></pre>
+</div>
+    
+
+
