@@ -1,0 +1,64 @@
+{
+    "common" : {
+        "paths" : {
+            "navbar" : "components/common/navbar.html",
+            "sidebar" : "components/common/sidebar.html"
+        }
+    },
+    "git" : {
+        "topic" : "Git",
+        "mainContent" : "introduccion",
+        "paths" : {
+            "logo" : "components/git/common/assets/img/git-logo.png",
+            "sidebar" : "components/git/common/assets/sidebar.json",
+            "introduccion" : {
+                "basePath" : "components/git/introduccion",
+                "html" : "introduccion.html"   
+            },
+            "comandos" : {
+                "init" : {
+                    "basePath" : "components/git/comandos/init",
+                    "html" : "init.html"
+                },
+                "basic-snapshotting" : { 
+                    "basePath" : "components/git/comandos/basic-snapshotting",
+                    "html" : "basic-snapshotting.html"
+                },
+                "branch" : { 
+                    "basePath" : "components/git/comandos/branch",
+                    "html" : "branch.html"
+                },
+                "merge" : { 
+                    "basePath" : "components/git/comandos/merge",
+                    "html" : "merge.html"
+                }
+            },
+            "gitignore" : {
+                "basePath" : "components/git/gitignore",
+                "html" : "gitignore.html"   
+            },
+            "plataformas" : {
+                "github" : {
+                    "basePath" : "components/git/plataformas/github",
+                    "html" : "github.html"
+                },
+                "gitlab" : {
+                    "basePath" : "components/git/plataformas/gitlab",
+                    "html" : "gitlab.html"
+                }
+            }
+        }
+    },
+    "svn" : {
+        "topic" : "SVN",
+        "mainContent" : "conceptos-basicos.introduccion",
+        "paths" : {
+            "logo" : "components/svn/common/assets/img/svn-logo.png",
+            "sidebar" : "components/svn/common/assets/sidebar.json",
+            "conceptos-basicos": {
+            },
+            "conceptos-principales" : {
+            }
+        }
+    }
+}

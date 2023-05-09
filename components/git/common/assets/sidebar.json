@@ -1,0 +1,66 @@
+{
+    "pageContent" : [
+        {
+            "text" : "Conceptos Básicos",
+            "contentId" : "basics",
+            "content" : [
+                {
+                    "text" : "Introducción",
+                    "content" : "git.paths.introduccion"
+                }
+            ]
+        },
+        {
+            "text" : "Conceptos Principales",
+            "contentId" : "main",
+            "content" : [
+                {
+                    "text" : "Comandos",
+                    "contentId":"comandos",
+                    "content" : [
+                        {
+                            "text" : "Iniciar repositorio",
+                            "content" : "git.paths.comandos.init"
+                        },
+                        {
+                             "text" : "Instantáneas del volumen",
+                            "content" : "git.paths.comandos.basic-snapshotting"
+                        },
+                        {
+                            "text" : "Ramas",
+                            "content" : "git.paths.comandos.branch"
+                        },
+                        {
+                            "text" : "Mergeos",
+                            "content" : "git.paths.comandos.merge"
+                        }
+                    ]
+                },
+                {
+                    "text" : "Plataformas",
+                    "contentId":"plataformas",
+                    "content" : [
+                        {
+                            "text" : "Github",
+                            "content" : "git.paths.plataformas.github"
+                        },
+                        {
+                             "text" : "GitLab",
+                            "content" : "git.paths.plataformas.gitlab"
+                        }
+                    ]
+                },
+                {
+                    "text" : "Gitignore",
+                    "content" : "git.paths.gitignore"
+                }
+            ]
+        }
+    ],
+    "links" : [
+        {
+            "text" : "***",
+            "href" : ""
+        }
+    ]
+}
