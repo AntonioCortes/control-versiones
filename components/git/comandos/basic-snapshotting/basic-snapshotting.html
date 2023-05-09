@@ -12,7 +12,10 @@ git commit --amend --no-edit==== modify the last commit changes, --no-edit permi
 </div>
 
 
+<h2>Push</h2>
 
+
+<p><b>NOTE:</b> Always pull before you push. When you pull first, you can prevent upstream merge conflicts.</p>
 
 - git clean -f -d ==== remove untracked directories
 git reflog ==== para ver todos los cambios
@@ -25,65 +28,97 @@ git reflog ==== para ver todos los cambios
 
 - git add .
 - git reset HEAD 'nombre fichero' ==== Para sacar fichero del stage
+<h2>Pull vs Fetch</h2>
 
+<p>The key difference between git fetch and pull is that git pull will copy changes from a remote repository directly into your working directory, while git fetch will not. The git fetch command will only copy changes into your local Git repo. The git pull command does both.</p>
 
-
-
-
-Sometimes you may not fully test your changes before comitting them and may have undesirable consequences … you can back out your changes by using a git revert command like the following. You can either specify the id of your commit that you can see from the previous log output or use the shortcut HEAD to rollback the last commit:
-git revert HEAD --no-edit
-NOTE: If you don't specify the --no-edit flag you may be presented with an editor screen showing the message with changes to be reverted. In that case, press the Control (or Ctrl) key simultaneously with X.
-
-NOTA: HACER FETCH ANTES DE PULL
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git pull
 git fetch
+</code></pre>
+</div>
 
-Pull
-Always pull before you push. When you pull first, you can prevent upstream merge conflicts.
+</div><div class="center-horizontal">
+    <img src=".\components\git\comandos\basic-snapshotting\assets\pull-fetch.png">
+</div>
 
+<h2>Comparar versiones</h2>
 
-
-**git diff 
-
-
-
-**************************
-Revertir commits:
-Solución si NO hemos subido el commit a nuestro repositorio remoto (no hemos realizado push):
-
-1ª opción:
-
-git reset --hard HEAD~1
-
---head: Con esta opción estamos indicando que retrocedemos a el comit HEAD~1 y perdemos todas las confirmaciones posteriores. HEAD~1 es un atajo para apuntar al commit anterior al que nos encontramos. CUIDADO, con la opcion –head, ya que como he dicho se borran todos los commits posteriores al commit al que indicamos.
-
-2ª opción:
-
-git reset --soft HEAD~1 
-
---soft: con esta opción estamos indicando que retrocedemos a el commit HEAD~1 y no perdemos los cambios de los commits posteriores. Todos los cambios aparecerán como pendientes para realizar un commit.
-Solución si hemos subido el commit a nuestro repositorio remoto (hemos realizado push):
-
-En caso de que queramos borrar un commit que ya hemos subido al servidor remoto, la mejor opcion es realizar un nuevo commit que borre el commit que queremos eliminar utilizando el comando revert. De esta forma cualquier usuario que se tenga actualizado el contenido del repositorio remoto puede obtener el cambio simplemente haciendo pull. Por lo tanto para borrar el ultimo commit teniendo en cuanta que el commit esta subido en un repositoriio remoto debemos usar:
-
-git revert HEAD
-*****************************
+<p> **git diff </p>
 
 
+<h2>Visualización de objetos</h2>
+<p>Para ver información sobre distintos elementos ya sean ramas, commits, etc se utiliza el comando <b>git show</b></p>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git show [objeto]
+git show --name-status [objeto]
+git show --name-only [objeto]
+git show --pretty [objeto]
+</code></pre>
+</div>
 
-************
+
+<p>Sometimes you may not fully test your changes before comitting them and may have undesirable consequences … you can back out your changes by using a git revert command like the following. You can either specify the id of your commit that you can see from the previous log output or use the shortcut HEAD to rollback the last commit:</p>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+#comando:
+git revert HEAD --no-edit
+</code></pre>
+</div>
+<p><b>NOTE:</b> If you don't specify the --no-edit flag you may be presented with an editor screen showing the message with changes to be reverted. In that case, press the Control (or Ctrl) key simultaneously with X.</p>
+
+
+<h2>Revertir commits</h2>
+
+
+<p>Solución si NO hemos subido el commit a nuestro repositorio remoto (no hemos realizado push):</p>
+
+<ul>
+    <li>
+        <p>1ª opción: git reset --hard HEAD~1</p>
+        <p><b>--head</b>: Con esta opción estamos indicando que retrocedemos a el comit HEAD~1 y perdemos todas las confirmaciones posteriores. HEAD~1 es un atajo para apuntar al commit anterior al que nos encontramos. CUIDADO, con la opcion –head, ya que como he dicho se borran todos los commits posteriores al commit al que indicamos.</p>
+    </li>
+    <li>
+        <p>2ª opción: git reset --soft HEAD~1</p>
+        <p><b>--soft</b>: con esta opción estamos indicando que retrocedemos a el commit HEAD~1 y no perdemos los cambios de los commits posteriores. Todos los cambios aparecerán como pendientes para realizar un commit.</p>
+    </li>
+    <li>
+        <p>Solución si hemos subido el commit a nuestro repositorio remoto (hemos realizado push):</p>
+        <p>En caso de que queramos borrar un commit que ya hemos subido al servidor remoto, la mejor opcion es realizar un nuevo commit que borre el commit que queremos eliminar utilizando el comando revert. De esta forma cualquier usuario que se tenga actualizado el contenido del repositorio remoto puede obtener el cambio simplemente haciendo pull. Por lo tanto para borrar el ultimo commit teniendo en cuanta que el commit esta subido en un repositoriio remoto debemos usar:</p>
+        <p>git revert HEAD</p>
+    </li>
+</ul>
+
+
+
+
+<h2>Stash</h2>
+<p>Se usa el comando <b>git stash</b> para guardar los cambios realizados en un directorio auxiliar y de esta forma seguir trabajando, con el objetivo de volver a recuperar de dicho directorio, los cambios guardados, en otro momento.</p>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+#Para guardar los cambios:
 git stash
-
+#Para traer de vuelta los cambios:
 git stash pop
-************
+</code></pre>
+</div>
 
 
-
-integración:
-git-am to apply patches e-mailed in from your contributors. git-pull to merge from your trusted lieutenants. git-format-patch to prepare and send suggested alternative to contributors. git-revert to undo botched commits. git-push to publish the bleeding edge.
-
-developer:
-git-clone from the upstream to prime the local repository. git-pull and git-fetch from "origin" to keep up-to-date with the upstream. git-push to shared repository, if you adopt CVS style shared repository workflow. git-format-patch to prepare e-mail submission, if you adopt Linux kernel-style public forum workflow. git-send-email to send your e-mail submission without corruption by your MUA. git-request-pull to create a summary of changes for your upstream to pull.
-
-admin:
-git-daemon to allow anonymous download from repository. git-shell can be used as a restricted login shell for shared central repository users. git-http-backend provides a server-side implementation of Git-over-HTTP ("Smart http") allowing both fetch and push services. gitweb provides a web front-end to Git repositories, which can be set-up using the git-instaweb script.
-
+<h2>Anexo</h2>
+<ul>
+    <li>
+        <p>integración:</p>
+        <p><b>git-am</b> to apply patches e-mailed in from your contributors. git-pull to merge from your trusted lieutenants. git-format-patch to prepare and send suggested alternative to contributors. git-revert to undo botched commits. git-push to publish the bleeding edge.</p>
+    </li>
+    <li>
+        <p>developer:</p>
+        <p><b>git-clone</b> from the upstream to prime the local repository. git-pull and git-fetch from "origin" to keep up-to-date with the upstream. git-push to shared repository, if you adopt CVS style shared repository workflow. git-format-patch to prepare e-mail submission, if you adopt Linux kernel-style public forum workflow. git-send-email to send your e-mail submission without corruption by your MUA. git-request-pull to create a summary of changes for your upstream to pull.</p>
+    </li>
+    <li>
+        <p>admin:</p>
+        <p><b>git-daemon</b> to allow anonymous download from repository. git-shell can be used as a restricted login shell for shared central repository users. git-http-backend provides a server-side implementation of Git-over-HTTP ("Smart http") allowing both fetch and push services. gitweb provides a web front-end to Git repositories, which can be set-up using the git-instaweb script.</p>
+    </li>
+    
+</ul>
