@@ -1,1 +1,60 @@
 <h1 class="title">Ramas</h1>
+
+<p>La rama master solo se toca para mergear y lo que esté en la master debe estar desplegado o debería, el código de otros entornos como test, desarrollo, etc debe estar en otras ramas.</p>
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git branch create a branch using git branch
+- git checkout -b [rama a crear]
+- git branch -b [nombre rama a crear] origin/[nombre rama a copiar] ==== creacion de ramas
+- git branch -r (ver ramas remotas)
+
+git checkout switch to a branch using git checkout NOTE: The -b flag creates the branch if it does not already exist.
+git status check the status of files changed using git status
+git log review recent commits using git log NOTE: --oneline para verlo todo en una linea
+git revert revert changes using git revert
+git branch get a list of branches and active branch using git branch
+git merge merge changes in your active branch into another branch using git merge
+</code></pre>
+</div>
+
+
+
+<h2>Mover una rama</h2>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+#mover
+git branch -m [old-branch] [new-branch]
+</code></pre>
+</div>
+
+</div><div class="center-horizontal">
+    <img src=".\components\git\comandos\branch\assets\mover_rama.png">
+</div>
+    
+
+<h2>Cambiar el nombre de una rama</h2>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+#1. moverse a la rama que queremos cambiar
+git checkout [old-branch]
+#2. seleccionar nuevo nombre
+git branch -m [new-branch]
+#3. sincronizar con el repositorio remoto
+git push origin -u :[old-branch] [new-branch]
+</code></pre>
+</div>
+        
+
+
+
+
+borrar ramas
+- git branch -d [rama a borrar EN LOCAL]
+- git branch -D [rama a borrar EN LOCAL forzando el borrado]
+- git push origin :nombre-rama [rama a borrar EN REMOTO]
+
+
+
+
+upstream??!?!?!
