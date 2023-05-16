@@ -2,22 +2,28 @@
 
 <p>La rama master solo se toca para mergear y lo que esté en la master debe estar desplegado o debería, el código de otros entornos como test, desarrollo, etc debe estar en otras ramas.</p>
 
+<h2>Crear una rama</h2>
+
 <div class="center-horizontal">
 <pre><code class="language-bash hljs">
-git branch create a branch using git branch
-- git checkout -b [rama a crear]
-- git branch -b [nombre rama a crear] origin/[nombre rama a copiar] ==== creacion de ramas
-- git branch -r (ver ramas remotas)
-
-git checkout switch to a branch using git checkout NOTE: The -b flag creates the branch if it does not already exist.
-git status check the status of files changed using git status
-git log review recent commits using git log NOTE: --oneline para verlo todo en una linea
-git revert revert changes using git revert
-git branch get a list of branches and active branch using git branch
-git merge merge changes in your active branch into another branch using git merge
+git branch nombre-de-la-rama
+#Con checkout se crea la rama y se mueve a ella automáticamente
+git checkout -b nombre-de-la-rama
+#Para especificar una rama en la que no se esté posicionado
+git checkout -b [nombre rama a crear] [nombre rama a copiar]
 </code></pre>
 </div>
 
+<h2>Ver ramas</h2>
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+#Ver ramas en remoto
+git branch -r 
+#Ver todas las ramas
+git branch -a
+</code></pre>
+</div>
 
 
 <h2>Mover una rama</h2>

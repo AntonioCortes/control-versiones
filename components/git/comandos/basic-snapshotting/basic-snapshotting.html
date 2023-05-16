@@ -1,33 +1,53 @@
 <h1 class="title">Instantáneas del volumen</h1>
 
+</div><div class="center-horizontal">
+    <img src=".\components\git\comandos\basic-snapshotting\assets\Git-Working-Tree.png">
+</div>
+
+<h2>git add</h2>
+
+<p>El comando <b>git add</b> en Git se utiliza para agregar cambios realizados en archivos específicos al área de preparación (también conocida como "staging area"). La función principal de este comando es seleccionar los archivos que se incluirán en el próximo commit.</p>
 
 <div class="center-horizontal">
 <pre><code class="language-bash hljs">
 git add [ruta a añadir]
-git init create a new local repository using git init 
-git add create and add a file to the repo using git add
-git commit ==== commit changes using git commit
-git commit --amend --no-edit==== modify the last commit changes, --no-edit permite no alterar el mensaje del commit
+#Para añadir todo lo que haya en el repositorio
+git add .
 </code></pre>
 </div>
 
+<h2>Commits</h2>
 
-<h2>Push</h2>
+<p>Cuando se hace un commit en Git, se crea una instantánea de los archivos en ese momento. registra y guarda los cambios realizados en un repositorio. Representa un punto en la historia del repositorio donde se confirma un conjunto de modificaciones en los archivos. Cada commit en Git tiene un identificador único y contiene información sobre quién realizó el commit, cuándo se hizo y un mensaje descriptivo que explica los cambios realizados.</p>
 
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git commit -m "meaninfull message"
+
+#Modifica el último commit y reescribe el mensaje
+git commit --amend -m "an updated commit message"
+
+#modifica el último commit, --no-edit permite no alterar el mensaje del commit
+git commit --amend --no-edit
+</code></pre>
+</div>
+
+<h2>git push</h2>
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git push [repositorio que se desea modificar][cambios locales a enviar]
+git push
+git push origin master
+</code></pre>
+</div>
+
+<p>Si no se especifican parámetros se envian los cambios de la rama en la que se esté posicionado a la mima rama en remoto.</p>
+
+<p>El comando "git push origin master" en Git se utiliza para enviar los cambios realizados en tu rama local "master" al repositorio remoto llamado "origin". Permite actualizar la rama "master" en el repositorio remoto con tus cambios locales.</p>
 
 <p><b>NOTE:</b> Always pull before you push. When you pull first, you can prevent upstream merge conflicts.</p>
 
-- git clean -f -d ==== remove untracked directories
-git reflog ==== para ver todos los cambios
-- git fetch
-- git checkout develop
-- git pull origin develop
-- git merge [rama a mergear]
-- git status
-- git push origin develop
-
-- git add .
-- git reset HEAD 'nombre fichero' ==== Para sacar fichero del stage
 <h2>Pull vs Fetch</h2>
 
 <p>The key difference between git fetch and pull is that git pull will copy changes from a remote repository directly into your working directory, while git fetch will not. The git fetch command will only copy changes into your local Git repo. The git pull command does both.</p>
@@ -39,17 +59,69 @@ git fetch
 </code></pre>
 </div>
 
+<p><b>NOTA:</b> Para actualizar tu repositorio local con los últimos cambios del repositorio remoto "origin" en la rama "master":</p>
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git pull [cambios de la rama que se desean actualizar][rama a actualizar]
+git pull origin master
+</code></pre>
+</div>
+
+
 </div><div class="center-horizontal">
     <img src=".\components\git\comandos\basic-snapshotting\assets\pull-fetch.png">
 </div>
 
-<h2>Comparar versiones</h2>
+<h2>git status</h2>
 
-<p> **git diff </p>
+<p>Muestra el estado actual del repositorio local y proporciona información sobre los archivos modificados, agregados o eliminados. Al ejecutar "git status", obtendrás información sobre:</p>
+<ul>
+    <li>Archivos modificados: Git te mostrará una lista de los archivos que han sido modificados en tu directorio de trabajo desde el último commit. Esto te permite ver qué archivos han sido editados y aún no han sido confirmados en un commit.</li>
+    <li>Archivos en el área de preparación (staging area): Git te mostrará una lista de los archivos que has agregado al área de preparación ("staging area") utilizando el comando "git add". Estos son los archivos que se incluirán en el próximo commit.</li>
+    <li>Archivos sin seguimiento (untracked files): Git te mostrará una lista de los archivos que existen en tu directorio de trabajo pero aún no han sido agregados al repositorio. Estos archivos no están siendo rastreados por Git.</li>
+</ul>
+
+<h2>git log</h2>
+
+<p>Revisa los commits recientes</p>
+<p><b>NOTA:</b> --oneline para verlo todo en una linea</p>
+
+<h2>git reflog</h2>
+
+<p>muestra un registro detallado de las referencias de Git que han sido actualizadas en el repositorio local. Proporciona un historial completo de todos los movimientos de HEAD y las ramas, incluso si han sido eliminadas o modificadas.</p>
+
+<p>Al ejecutar "git reflog", se muestra una lista de entradas en orden cronológico inverso. Cada entrada en el registro contiene información como el identificador del commit (hash), la acción realizada (como commit, checkout, reset, merge, etc.), la referencia de origen y la referencia de destino.</p>
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git reflog
+a634bcd (HEAD -> alejandro-torres-info, origin/master, origin/alejandro-torres-info, origin/HEAD, master) HEAD@{0}: merge master: Fast-forward
+1d915c0 HEAD@{1}: checkout: moving from master to alejandro-torres-info
+a634bcd (HEAD -> alejandro-torres-info, origin/master, origin/alejandro-torres-info, origin/HEAD, master) HEAD@{2}: pull: Merge made by the 'recursive' strategy.
+587d015 HEAD@{3}: merge alejandro-torres-info: Merge made by the 'recursive' strategy.
+1baa313 HEAD@{4}: checkout: moving from alejandro-torres-info to master
+1d915c0 HEAD@{5}: commit: info
+e75f7b7 HEAD@{6}: commit: git info
+d96f2a1 HEAD@{7}: checkout: moving from master to alejandro-torres-info
+1baa313 HEAD@{8}: pull: Fast-forward
+2c98c50 HEAD@{9}: checkout: moving from alejandro-torres-info to master
+</code></pre>
+</div>
+
+<h2>git clean</h2>
+
+<p>Con el comando <b>git clean -f -d</b> se eliminan los directorios que estén "untracked"</p>
+
+<h2>git diff</h2>
+
+<p>Git se utiliza para mostrar las diferencias entre los cambios realizados en el área de preparación (staging area) y los cambios en el directorio de trabajo, o para mostrar las diferencias entre dos commits específicos, ramas o cualquier combinación de referencias de Git.</p>
+<p>Cuando ejecutas "git diff" sin ningún argumento adicional, Git mostrará las diferencias entre los cambios sin confirmar en el directorio de trabajo y el estado actual del área de preparación. Esto te permite ver los cambios realizados en los archivos que aún no se han agregado al área de preparación.</p>
 
 
-<h2>Visualización de objetos</h2>
-<p>Para ver información sobre distintos elementos ya sean ramas, commits, etc se utiliza el comando <b>git show</b></p>
+<h2>git show</h2>
+
+<p>Para ver información sobre objetos de cualquier tipo, ya sean ramas, commits, etc se utiliza el comando <b>git show</b></p>
 <div class="center-horizontal">
 <pre><code class="language-bash hljs">
 git show [objeto]
@@ -59,19 +131,7 @@ git show --pretty [objeto]
 </code></pre>
 </div>
 
-
-<p>Sometimes you may not fully test your changes before comitting them and may have undesirable consequences … you can back out your changes by using a git revert command like the following. You can either specify the id of your commit that you can see from the previous log output or use the shortcut HEAD to rollback the last commit:</p>
-<div class="center-horizontal">
-<pre><code class="language-bash hljs">
-#comando:
-git revert HEAD --no-edit
-</code></pre>
-</div>
-<p><b>NOTE:</b> If you don't specify the --no-edit flag you may be presented with an editor screen showing the message with changes to be reverted. In that case, press the Control (or Ctrl) key simultaneously with X.</p>
-
-
 <h2>Revertir commits</h2>
-
 
 <p>Solución si NO hemos subido el commit a nuestro repositorio remoto (no hemos realizado push):</p>
 
@@ -88,14 +148,27 @@ git revert HEAD --no-edit
         <p>Solución si hemos subido el commit a nuestro repositorio remoto (hemos realizado push):</p>
         <p>En caso de que queramos borrar un commit que ya hemos subido al servidor remoto, la mejor opcion es realizar un nuevo commit que borre el commit que queremos eliminar utilizando el comando revert. De esta forma cualquier usuario que se tenga actualizado el contenido del repositorio remoto puede obtener el cambio simplemente haciendo pull. Por lo tanto para borrar el ultimo commit teniendo en cuanta que el commit esta subido en un repositoriio remoto debemos usar:</p>
         <p>git revert HEAD</p>
+        <p>git revert [hash-del-commit]</p>
     </li>
 </ul>
 
+<p><b>NOTA:</b> git reset HEAD 'nombre fichero', Para sacar fichero del stage</p>
+
+=====================
+<p>Sometimes you may not fully test your changes before comitting them and may have undesirable consequences … you can back out your changes by using a git revert command like the following. You can either specify the id of your commit that you can see from the previous log output or use the shortcut HEAD to rollback the last commit:</p>
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+#comando:
+git revert HEAD --no-edit
+</code></pre>
+</div>
+<p><b>NOTE:</b> If you don't specify the --no-edit flag you may be presented with an editor screen showing the message with changes to be reverted. In that case, press the Control (or Ctrl) key simultaneously with X.</p>
+=====================
 
 
 
 <h2>Stash</h2>
-<p>Se usa el comando <b>git stash</b> para guardar los cambios realizados en un directorio auxiliar y de esta forma seguir trabajando, con el objetivo de volver a recuperar de dicho directorio, los cambios guardados, en otro momento.</p>
+<p>Se usa el comando <b>git stash</b> para guardar los cambios realizados en un directorio auxiliar y de esta forma seguir trabajando, con el objetivo de volver a recuperar de dicho directorio, los cambios guardados en otro momento.</p>
 <div class="center-horizontal">
 <pre><code class="language-bash hljs">
 #Para guardar los cambios:
