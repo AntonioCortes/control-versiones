@@ -40,6 +40,7 @@ git branch -m [old-branch] [new-branch]
     
 
 <h2>Cambiar el nombre de una rama</h2>
+
 <div class="center-horizontal">
 <pre><code class="language-bash hljs">
 #1. moverse a la rama que queremos cambiar
@@ -53,12 +54,17 @@ git push origin -u :[old-branch] [new-branch]
         
 
 
+<h2>Borrar ramas</h2>
+
+<div class="center-horizontal">
+<pre><code class="language-bash hljs">
+git branch -d [rama a borrar EN LOCAL]
+git branch -D [rama a borrar EN LOCAL forzando el borrado]
+git push origin :nombre-rama [rama a borrar EN REMOTO]
+</code></pre>
+</div>
 
 
-borrar ramas
-- git branch -d [rama a borrar EN LOCAL]
-- git branch -D [rama a borrar EN LOCAL forzando el borrado]
-- git push origin :nombre-rama [rama a borrar EN REMOTO]
 
 
 

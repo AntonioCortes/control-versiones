@@ -4,6 +4,8 @@
     <img src=".\components\git\comandos\basic-snapshotting\assets\Git-Working-Tree.png">
 </div>
 
+<p><b>NOTA:</b> En Git, el término <b>upstream</b> se utiliza para referirse al repositorio remoto desde el cual se clonó un repositorio local. También puede referirse al repositorio remoto configurado como el repositorio principal para realizar el seguimiento de los cambios.</p>
+
 <h2>git add</h2>
 
 <p>El comando <b>git add</b> en Git se utiliza para agregar cambios realizados en archivos específicos al área de preparación (también conocida como "staging area"). La función principal de este comando es seleccionar los archivos que se incluirán en el próximo commit.</p>
@@ -47,6 +49,10 @@ git push origin master
 <p>El comando "git push origin master" en Git se utiliza para enviar los cambios realizados en tu rama local "master" al repositorio remoto llamado "origin". Permite actualizar la rama "master" en el repositorio remoto con tus cambios locales.</p>
 
 <p><b>NOTE:</b> Always pull before you push. When you pull first, you can prevent upstream merge conflicts.</p>
+
+<h2>git pull</h2>
+
+<p>Al ejecutar <b>git pull</b>, se obtendrán los últimos cambios del repositorio remoto <b>upstream</b> y se fusionarán con tu rama local actual.</p>
 
 <h2>Pull vs Fetch</h2>
 
@@ -147,8 +153,8 @@ git show --pretty [objeto]
     <li>
         <p>Solución si hemos subido el commit a nuestro repositorio remoto (hemos realizado push):</p>
         <p>En caso de que queramos borrar un commit que ya hemos subido al servidor remoto, la mejor opcion es realizar un nuevo commit que borre el commit que queremos eliminar utilizando el comando revert. De esta forma cualquier usuario que se tenga actualizado el contenido del repositorio remoto puede obtener el cambio simplemente haciendo pull. Por lo tanto para borrar el ultimo commit teniendo en cuanta que el commit esta subido en un repositoriio remoto debemos usar:</p>
-        <p>git revert HEAD</p>
-        <p>git revert [hash-del-commit]</p>
+        <p><b>git revert HEAD</b></p>
+        <p><b>git revert [hash-del-commit]</b></p>
     </li>
 </ul>
 
