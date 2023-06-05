@@ -1,1 +1,124 @@
 <h1 class="title">GitHub</h1>
+
+<p>En github una organización es un conjunto de personas propietarias de un repositorio</p>
+
+
+<h2>Fork</h2>
+
+<p>
+    Fork
+If a developer wants to create a derivative project with another project as the starting point, or work on a project using a separate or independent clone, the developer can chose to fork a project. You can fork any public project by going to its GitHub project page and clicking on the Fork button towards the top of the page.
+
+NOTE: The fork option is available only using the web interface and there is no git command to create a fork. You can however use a git clone workaround - indicated at the bottom of this reading if interested.
+
+The project from which you create the fork is called the upstream project.
+
+Once a project has been forked, the developers with access to the fork can work on updating and making changes to the fork using the same workflow as described previosuly i.e. the forked copy of the project now becomes the origin and developers with access to origin can create clones of it on their local machines, where they can create and merge branches, and synchronize changes with the origin using pull and push.
+
+However it is important to note that the synchronization of changes using merge and push can only be done with repos that the developers have write access to i.e. in this case their fork of the project i.e. the origin from which they create their local clones. But what if a developer wants contribute their changes back to the upstream project that they do not have write access to? In this case they can submit a pull request or PR with their proposed changes. A pull request can be opened by going to the project’s homepage, navigating to the Pull Requests tab, and then clicking on New Pull Request.
+</p>
+
+<h2>When to fork or clone?</h2>
+
+<p>
+    By now you should be familiar with the difference between fork and clone. So let’s summarize when you should clone vs. fork. Typically if you have access to a project repo e.g. as part of a team developing a codebase collaboratively, you can clone the repo and synchronize changes from your local copy of the repo using pull and push.
+
+
+If however there is a public project that you want to contribute to but do not have write access to, or use a public project as a starting point for your own project, you can fork the project. Then work with the forked codebase by cloning it to your machine and collaborating with your development team working on the fork using the pull-push synchronization with your fork of the project. But if you want to contribute your changes back to the upstream project (the original project that you forked from), you can submit your changes using a pull request.
+</p>
+
+
+
+
+<h2>Anexo</h2>
+
+<h3>Developer</h3>
+<ul>
+    <li><b>git-clone</b> from the upstream to prime the local repository.</li>
+    <li><b>git-pull</b> and git-fetch from "origin" to keep up-to-date with the upstream.</li>
+    <li><b>git-push</b> to shared repository, if you adopt CVS style shared repository workflow.</li>
+    <li><b>git-format-patch</b> to prepare e-mail submission, if you adopt Linux kernel-style public forum workflow.</li>
+    <li><b>git-send-email</b> to send your e-mail submission without corruption by your MUA.</li>
+    <li><b>git-request-pull</b> to create a summary of changes for your upstream to pull.</li>
+</ul>
+
+
+<h3>Integrador</h3>
+<ul>
+    <li><b>git-am</b> to apply patches e-mailed in from your contributors. </li>
+    <li><b>git-pull</b> to merge from your trusted lieutenants. </li>
+    <li><b>git-format-patch</b> to prepare and send suggested alternative to contributors. </li>
+    <li><b>git-revert</b> to undo botched commits. </li>
+    <li><b>git-push</b> to publish the bleeding edge.</li>
+</ul>
+
+
+<h3>Admin</h3>
+<ul>
+    <li><b>git-daemon</b> to allow anonymous download from repository.</li>
+    <li><b>git-shell</b> can be used as a restricted login shell for shared central repository users.</li>
+    <li><b>git-http-backend</b> provides a server-side implementation of Git-over-HTTP ("Smart http") allowing both fetch and push services.</li>
+    <li><b>gitweb</b> provides a web front-end to Git repositories, which can be set-up using the <b>git-instaweb</b> script.</li>
+</ul>
+
+<h2>SSH</h2>
+
+To generate an SSH key, complete the following steps:
+
+Launch a terminal. If you are using Windows, launch Git Bash.
+
+Type the following command in your terminal, replacing <your email address> with the email address that is linked to your Github account. When you have typed the command, press Enter.
+
+ssh-keygen -t rsa -b 4096 -C "<your email address>"
+
+A new SSH key is generated.
+
+You will be prompted to enter a directory to save the key. You can simply press Enter to accept the default location, which is an .ssh folder in the home directory. This means you will be able to locate the key in ~/.ssh/id_rsa.
+
+You will be prompted to choose a passphrase. You also have the option not to create a passphrase. To skip the passphrase, press Enter twice to confirm that the passphrase is empty.
+
+Optional: To navigate to the .ssh directory, and check the contents of the directory, run the following commands in the terminal:
+
+cd ~/.ssh
+
+and then,
+
+ls
+
+When you list the contents of the .ssh directory, you should see id_rsa and id_rsa.pub in the list of contents, where id_rsa is the private version of your key and id_rsa.pub is the public version of your key.
+
+You now need to add the SSH key to the ssh-agent, which helps with the authentication process. To start the ssh-agent, run the following command in the terminal:
+
+eval "$(ssh-agent -s)"
+
+To add the key to the agent, run the following command in the terminal:
+
+ssh-add ~/.ssh/id_rsa
+
+<h2>Add SSh to Repo</h2>
+
+To add an SSH key to GitHub, you need to copy the SSH key that you generated in the previous lab. Open a terminal and then complete the following steps:
+
+In the terminal, run the following command:
+
+cat ~/.ssh/id_rsa.pub | clip
+
+Note: If clip doesn’t work, run cat ~/.ssh/id_rsa.pub in the command line and the copy the output.
+
+Sign in to GitHub. At the top right, click the drop-down menu on your profile image and select Settings.
+
+image
+
+From the “Personal settings” menu, select SSH and GPG keys, as shown in the following image:
+
+image
+
+Click New SSH key.
+
+image
+
+Enter a title for the new SSH key. In the Key field, paste the key that you copied in step 1, above. The pasted key should include Your email address at the end, as shown in the following image:
+
+image
+
+Click Add SSH Key. The SSH key is added to your account.
